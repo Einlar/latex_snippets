@@ -1,0 +1,219 @@
+{
+	// Place your snippets for latex here. Each snippet is defined under a snippet name and has a prefix, body and 
+	// description. The prefix is what is used to trigger the snippet and the body will be expanded and inserted. Possible variables are:
+	// $1, $2 for tab stops, $0 for the final cursor position, and ${1:label}, ${2:another} for placeholders. Placeholders with the 
+	// same ids are connected.
+	// Example:
+	// "Print to console": {
+	// 	"prefix": "log",
+	// 	"body": [
+	// 		"console.log('$1');",
+	// 		"$2"
+	// 	],
+	// 	"description": "Log output to console"
+	// }
+	"Align*": {
+		"prefix": "al",
+		"body": [
+			"\\begin{align*}",
+			"\t$0",
+			"\\end{align*}"
+		]
+	},
+	"fraction": {
+		"prefix": "f",
+		"body": [
+			"\\frac{$1}{$2} $0"
+		]
+	},
+	"bold": {
+		"prefix": "bold",
+		"body": [
+			"\\textbf{${1:${TM_SELECTED_TEXT}}} $0"
+		]
+	},
+	"italic": {
+		"prefix": "italic",
+		"body": [
+			"\\textit{${1:${TM_SELECTED_TEXT}}} $0"
+		]
+	},
+	"underbrace": {
+		"prefix": "underbrace",
+		"body": [
+			"\\underbrace{${1:${TM_SELECTED_TEXT}}}_{$2} $0"
+		]
+	},
+	"overbrace": {
+		"prefix": "overbrace",
+		"body": [
+			"\\overbrace{${1:${TM_SELECTED_TEXT}}}_{$2} $0"
+		]
+	},
+	"underset": {
+		"prefix": "underset",
+		"body": [
+			"\\underset{$1}{${2:${TM_SELECTED_TEXT}}} $0"
+		]
+	},
+	"overset": {
+		"prefix": "overset",
+		"body": [
+			"\\overset{$1}{${2:${TM_SELECTED_TEXT}}} $0"
+		]
+	},
+	"thm": {
+		"prefix": "thm",
+		"body": [
+			"\\begin{thm} $1 \\end{thm} $0"
+		]
+	},
+	"itemize": {
+		"prefix": "itemize",
+		"body": [
+			"\\begin{itemize}",
+			"\t\\item $1",
+			"\\end{itemize}",
+			"$0"
+		]
+	},
+	"enumerate": {
+		"prefix": "enum",
+		"body": [
+			"\\begin{enumerate}",
+			"\t\\item $1",
+			"\\end{enumerate}",
+			"$0"
+		]
+	},
+	"Environment": {
+		"prefix": "beg",
+		"body": [
+			"\\begin{${1:name}}",
+			"\t$0",
+			"\\end{${1:name}}"
+		]
+	},
+	"Text": {
+		"prefix": "txt",
+		"body": [
+			"\\text{$0}"
+		]
+	},
+	"Image": {
+		"prefix": "img",
+		"body": [
+			"\\begin{figure}[H]",
+			"\t\\centering",
+			"\t\\includegraphics[width=0.5\\textwidth]{${1:${TM_SELECTED_TEXT}}}",
+			"\t\\caption{${2:caption}\\label{fig:${3:sample}}}",
+			"\\end{figure}",
+			"$0"
+		]
+	},
+	"Table": {
+		"prefix": "tab",
+		"body": [
+			"\\begin{table}[H]",
+			"\t\\centering",
+			"\t\\begin{tabular}{${1:ccc}}",
+			"\t\t\\toprule",
+			"\t\ta & b & c \\\\\\ \\midrule",
+			"\t\t1 & 2 & 3 \\\\\\",
+			"\t\t\\bottomrule",
+			"\t\\end{tabular}",
+			"\t\\caption{${2:caption}\\label{tab:${3:sample}}}",
+			"\\end{table}",
+			"$0"
+		]
+	},
+	"pmatrix": {
+		"prefix": "pm",
+		"body": [
+			"\\begin{pmatrix}",
+			"$1",
+			"\\end{pmatrix}",
+			"$0"
+		]
+	},
+	"Integral": {
+		"prefix": "int",
+		"body": [
+			"\\int_{${1:0}}^{${2:\\infty}} $0"
+		]
+	},
+	"Sum Full": {
+		"prefix": "sumi",
+		"body": [
+			"\\sum_{${1:i}=${2:0}}^{${3:\\infty}} $0"
+		]
+	},
+	"undersetinline": {
+		"prefix": "_",
+		"body": [
+			"_{$1}$0"
+		]
+	},
+	"parenthesis1": {
+		"prefix": "(",
+		"body": [
+			"\\left($1\\right"
+		]
+	},
+	"parenthesis2": {
+		"prefix": "[",
+		"body": [
+			"\\left[$1\\right"
+		]
+	},
+	"parenthesis3": {
+		"prefix": "{",
+		"body": [
+			"\\left{$1\\right"
+		]
+	},
+	"average": {
+		"prefix": "avg",
+		"body": [
+			"\\langle $1 \\rangle$0"
+		]
+	},
+	"Sum": {
+		"prefix": "sum",
+		"body": [
+			"\\sum_{${1:i=0}}^{${2:\\infty}} $0"
+		]
+	},
+	"hbar": {
+		"prefix": "hb",
+		"body": [
+			"\\hbar"
+		]
+	},
+	"section": {
+		"prefix": "sec",
+		"body": [
+			"\\section{$1}",
+			"$0"
+		]
+	},
+	"subsection": {
+		"prefix": "ssec",
+		"body": [
+			"\\subsection{$1}",
+			"$0"
+		]
+	},
+	"operatorname": {
+		"prefix": "op",
+		"body": [
+			"\\operatorname{$1} $0",
+		]
+	},
+	"mathrm": {
+		"prefix": "rm",
+		"body": [
+			"\\mathrm{$1} $0"
+		]
+	}
+}

@@ -1,0 +1,135 @@
+snippet dategreeting "Gives you the current date!"
+Hello from your hsnip at ``rv = new Date().toDateString()``!
+endsnippet
+
+snippet box "Box" A
+``rv = '┌' + '─'.repeat(t[0].length + 2) + '┐'``
+│ $1 │
+``rv = '└' + '─'.repeat(t[0].length + 2) + '┘'``
+endsnippet
+
+snippet `M([1-9])x([1-9])([ d])` "matrix" A
+``rv = '\\left(\\begin{array}{' + 'c'.repeat(m[2]) + '}'``
+``count = 1;
+msg = '';
+diag = (m[3] == 'd');
+
+for (i=0; i < parseInt(m[1],10); i++) {
+  diag && (i!=0) ? msg += '0' : msg += '${' + count + ':0}';
+  count++;
+  for (j=1; j < parseInt(m[2],10); j++) {
+    diag && (i!=j) ? msg += ' & 0' : msg += ' & ${' + count + ':0}';
+    count++;
+  }
+  if (i != parseInt(m[1],10)-1) {
+    msg += ' \\\\\\ \n';
+  }
+}
+rv = msg;``
+\\end{array}\\right)
+endsnippet 
+
+snippet `vec([1-9])` "column vector" A
+``rv = '\\begin{pmatrix}'``
+``count=2;
+msg = '${1:0}';
+for (i = 1; i < parseInt(m[1],10); i++) {
+  msg += ' \\\\\\ \n${' + count + ':0}';
+  count++;
+}
+rv = msg;
+``
+\\end{pmatrix}
+endsnippet
+
+snippet `([a-zA-Z])([0-9]+) ` "underset" A
+``if ( m[2].length == 1 ) { a = '_'; b = ' '; }
+  else { a = '_{'; b = '} '; }
+  rv = m[1] + a + m[2] + b``
+endsnippet
+
+snippet `(\\?\w+)(,\.|\.,)` "vector" A
+``rv = '\\vec{' + m[1] + '}'``
+endsnippet
+
+snippet `\b([a-zA-Z])bar\b` "bar" A
+``rv = '\\bar{' + m[1] + '}'``
+endsnippet
+
+snippet `\b([a-zA-Z])-hat\b` "hat" A
+``rv = '\\hat{' + m[1] + '}'``
+endsnippet
+
+snippet `\b([a-zA-Z])cal\b` "cal" A
+``rv = '\\mathcal{' + m[1] + '}'``
+endsnippet
+
+snippet `([A-Z])#` "bb" A
+``rv = '\\mathbb{' + m[1] + '}'``
+endsnippet
+
+snippet mk "inline math" A
+\$$1\$``if (t[1] && ",-.?: )]".indexOf(t[1][0]) >= 0) { rv = '' } else { rv = ' ' }``$2
+endsnippet
+
+snippet `(?<![\\a-zA-Z])([a-zA-Z])\1{1}(?![a-zA-Z])` "greek letters" A
+``transliteration = {"a": "\\alpha", "b": "\\beta", "g": "\\gamma", "G": "\\Gamma", "d": "\\delta", "D": "\\Delta", "e": "\\epsilon", "E": "\\varepsilon", "z": "\\zeta", "h": "\\eta", "t": "\\theta", "T": "\\Theta", "k": "\\kappa", "i": "\\iota", "l": "\\lambda", "L": "\\Lambda", "m": "\\mu", "n": "\\nu", "x": "\\xi", "X": "\\Xi", "p": "\\pi", "P": "\\Pi", "r": "\\rho", "s": "\\sigma", "S": "\\Sigma", "o": "\\omega", "O": "\\Omega", "c": "\\chi", "f": "\\phi", "F": "\\Phi", "y": "\\upsilon", "Y": "\\Upsilon", "v": "\\psi", "V": "\\Psi", "u": "\\tau" };
+rv = (transliteration[m[1]] || (m[1] + m[1]))``
+endsnippet
+
+snippet -> "to" A
+``rv = '\\to'``
+endsnippet
+
+snippet !> "mapsto" A
+``rv = '\\mapsto'``
+endsnippet
+
+snippet @@ "infinity" A
+``rv = '\\infty'``
+endsnippet
+
+snippet `([a-zA-Z0-9])td` "exponentiation" A
+``rv = m[1] + '^{$1}'``
+endsnippet
+
+snippet `\b(d|D)(\\?\w+)[dD](\w{1}|\\\w+) ` "derivatives" A
+``
+if (m[1] == 'd') 
+  rv = '\\frac{\\partial ' + m[2] + '}{\\partial ' + m[3] + '}';
+else 
+  rv = '\\frac{\\mathrm{d' + m[2] + '}}{\\mathrm{d' + m[3] + '}}';
+``
+endsnippet
+
+snippet `=>` "implies" A
+`` rv = '\\Rightarrow' ``
+endsnippet
+
+snippet `=<` "implied by" A
+``rv = '\\Leftarrow'``
+endsnippet
+
+snippet `==` "equals" A
+``rv = '&= $1 \\\\\\'``
+endsnippet
+
+snippet `<=` "leq" A
+``rv = '\\leq'``
+endsnippet
+
+snippet `>=` "geq" A
+``rv = '\\geq'``
+endsnippet
+
+snippet xnn "x_n"
+``rv = 'x_n' ``
+endsnippet
+
+snippet `([\\?a-zA-Z]+)->([\\?a-zA-Z]+) ` A
+``rv = '$1 \\xrightarrow[' + m[1] + ' \\to ' + m[2].replace('inf', '\\infty') + ']{} $2'`` 
+endsnippet
+
+snippet `lim_([\\?a-zA-Z]+)_([\\?a-zA-Z]+) ` A
+``rv = '\\lim_{' + m[1] + ' \\to ' + m[2].replace('inf', '\\infty') + '} '``
+endsnippet
