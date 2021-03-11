@@ -8,6 +8,36 @@ snippet box "Box" A
 ``rv = '└' + '─'.repeat(t[0].length + 2) + '┘'``
 endsnippet
 
+snippet // "Fraction simple" A
+\frac{$1}{$2}$0
+endsnippet
+
+snippet `((\d+)|(\d*)(\\)?([A-Za-z]+)((\^|_)(\{\d+\}|\d))*)/` "Fraction no ()" A
+\frac{``rv = m[1]``}{$1}$0
+endsnippet
+
+snippet `^.*\)/` "Fraction with ()" A
+``
+    let str = m[0];
+    str = str.slice(0, -1);
+    let lastIndex = str.length - 1;
+
+    let depth = 0;
+    let i = str.length - 1;
+
+    while (true) {
+        if (str[i] == ')') depth += 1;
+        if (str[i] == '(') depth -= 1;
+        if (depth == 0) break;
+        i -= 1;
+    }
+
+    let results = str.slice(0, i) + "\\frac{" + str.slice(i+1, -1) + "}";
+    results += "{$1}$0";
+    rv = results;
+    ``
+endsnippet
+
 snippet `M([1-9])x([1-9])([ d])` "matrix" A
 ``rv = '\\left(\\begin{array}{' + 'c'.repeat(m[2]) + '}'``
 ``count = 1;
