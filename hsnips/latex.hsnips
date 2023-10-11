@@ -146,7 +146,7 @@ snippet `=<` "implied by" A
 endsnippet
 
 snippet `==` "equals" A
-``rv = '&= $1 \\\\\\'``
+``rv = '&= ' + snip.tabstop(1, '') + ' \\\\\\'``
 endsnippet
 
 snippet `<=` "leq" A
@@ -162,7 +162,7 @@ snippet xnn "x_n"
 endsnippet
 
 snippet `([\\?a-zA-Z]+)->([\\?a-zA-Z]+) ` A
-``rv = '$1 \\xrightarrow[' + m[1] + ' \\to ' + m[2].replace('inf', '\\infty') + ']{} $2'``
+``rv = snip.tabstop(1, '') + ' \\xrightarrow[' + m[1] + ' \\to ' + m[2].replace('inf', '\\infty') + ']{' + snip.tabstop(2, '') + '} ' + snip.tabstop(0, '')``
 endsnippet
 
 snippet `lim_([\\?a-zA-Z]+)_([\\?a-zA-Z]+) ` A
